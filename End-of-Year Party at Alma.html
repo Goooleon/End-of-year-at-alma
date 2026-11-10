@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>End-of-Year Party at Alma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#e9eef0;--surface:#f6f8f8;--ink:#1d2f2b;--mute:#52665f;--line:#c4d0d0;--lamp:#e3993a;--lampsoft:#f7d9a6;--onlamp:#1d2f2b;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15201e;--surface:#1d2c29;--ink:#eef3f0;--mute:#a4b8b0;--line:#33473f;--lamp:#f0a84a;--lampsoft:#4a3820;--onlamp:#1d2f2b;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#15201e;--surface:#1d2c29;--ink:#eef3f0;--mute:#a4b8b0;--line:#33473f;--lamp:#f0a84a;--lampsoft:#4a3820;--onlamp:#1d2f2b;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.125rem/1.6 "Newsreader",Georgia,serif}
+main{max-width:44rem;margin:0 auto;padding:3rem 1.25rem 4rem}
+h1,h2,.chip,button{font-family:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif}
+.hero{position:relative;padding:1rem 0 2.5rem}
+.glow{position:absolute;right:-1rem;top:-.5rem;width:9rem;height:9rem;border-radius:50%;background:radial-gradient(circle,var(--lamp) 0%,var(--lampsoft) 45%,transparent 70%);opacity:.9;transition:opacity .4s}
+.glow.off{opacity:.15}
+h1{font-size:clamp(2.6rem,10vw,4.6rem);line-height:1;font-weight:800;margin:0 0 1rem;letter-spacing:-.02em;max-width:11ch}
+.lead{color:var(--mute);max-width:32rem;margin:0}
+.lamp-btn{margin-top:1.25rem;background:none;border:1px solid var(--line);color:var(--ink);border-radius:2rem;padding:.4rem 1rem;font-size:.95rem;cursor:pointer}
+.facts{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:.75rem;overflow:hidden;margin:1.5rem 0 3rem}
+.fact{background:var(--surface);padding:1rem 1.25rem;display:grid;grid-template-columns:6rem 1fr;gap:.75rem}
+.fact b{font-family:"Bricolage Grotesque",sans-serif;font-weight:500;color:var(--mute)}
+h2{font-size:1.6rem;margin:0 0 .5rem;font-weight:800;letter-spacing:-.01em}
+.rsvp{background:var(--surface);border:1px solid var(--line);border-radius:.75rem;padding:1.5rem}
+.row{display:flex;flex-wrap:wrap;gap:.5rem;margin:.75rem 0 1.25rem}
+.chip{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:2rem;padding:.5rem 1rem;font-size:1rem;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--lamp);border-color:var(--lamp);color:var(--onlamp);font-weight:800}
+label{display:block;font-family:"Bricolage Grotesque",sans-serif;font-weight:500;margin-bottom:.25rem}
+input{width:100%;font:inherit;padding:.6rem .8rem;border:1px solid var(--line);border-radius:.5rem;background:var(--bg);color:var(--ink);margin-bottom:1.25rem}
+.go{background:var(--ink);color:var(--bg);border:0;border-radius:.5rem;padding:.75rem 1.25rem;font-size:1rem;font-weight:800;cursor:pointer}
+.out{margin-top:1rem;color:var(--mute);min-height:1.6em}
+:focus-visible{outline:3px solid var(--lamp);outline-offset:2px}
+@media (max-width:30rem){.fact{grid-template-columns:1fr;gap:0}.glow{width:6rem;height:6rem}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+  <section class="hero">
+    <div class="glow" id="glow" aria-hidden="true"></div>
+    <h1>Lamps on, year winding down.</h1>
+    <p class="lead">Vivien, Nils and Gu are opening the door for a chill end-of-year evening in Dunbar. Come as you are, stay as long as you like.</p>
+    <button class="lamp-btn" id="lamp" type="button">Turn the lamp off</button>
+  </section>
+
+  <div class="facts">
+    <div class="fact"><b>When</b><span>Around mid-December. Exact date and time coming soon.</span></div>
+    <div class="fact"><b>Where</b><span>Vivien and Nils’s home at Alma, Dunbar, Vancouver. Exact address goes out with your RSVP.</span></div>
+    <div class="fact"><b>Vibe</b><span>Relaxed. Good company, good food, no agenda.</span></div>
+    <div class="fact"><b>Hosts</b><span>Vivien and Nils, with Gu organizing.</span></div>
+  </div>
+
+  <section class="rsvp" aria-labelledby="rsvp-h">
+    <h2 id="rsvp-h">Are you in?</h2>
+    <div class="row" role="group" aria-label="Your answer" id="answers">
+      <button class="chip" type="button" aria-pressed="false" data-v="I’m in">I’m in</button>
+      <button class="chip" type="button" aria-pressed="false" data-v="Maybe">Maybe</button>
+      <button class="chip" type="button" aria-pressed="false" data-v="Can’t make it">Can’t make it</button>
+    </div>
+    <label for="name">Your name</label>
+    <input id="name" autocomplete="name">
+    <label for="bring">What would you bring? (a dish, a drink, a playlist, nothing)</label>
+    <input id="bring">
+    <label for="diet">Anything we should know about food?</label>
+    <input id="diet">
+    <button class="go" id="copy" type="button">Copy my reply</button>
+    <p class="out" id="out" role="status"></p>
+  </section>
+</main>
+<script>
+(function(){
+  var glow=document.getElementById("glow"),lamp=document.getElementById("lamp"),on=true;
+  lamp.addEventListener("click",function(){on=!on;glow.classList.toggle("off",!on);lamp.textContent=on?"Turn the lamp off":"Turn the lamp on"});
+  var chosen="",chips=document.querySelectorAll(".chip");
+  chips.forEach(function(c){c.addEventListener("click",function(){chosen=c.dataset.v;chips.forEach(function(x){x.setAttribute("aria-pressed",x===c?"true":"false")})})});
+  var out=document.getElementById("out");
+  document.getElementById("copy").addEventListener("click",function(){
+    var n=document.getElementById("name").value.trim(),b=document.getElementById("bring").value.trim(),d=document.getElementById("diet").value.trim();
+    if(!chosen||!n){out.textContent="Pick an answer and add your name first.";return}
+    var t="End-of-year party at Alma: "+chosen+" ("+n+")."+(b?" I’ll bring: "+b+".":"")+(d?" Food notes: "+d+".":"");
+    function done(){out.textContent="Copied. Paste it in the group chat to reply."}
+    function fail(){out.textContent="Copy didn’t work here. Select and send this: "+t}
+    try{navigator.clipboard.writeText(t).then(done,fail)}catch(e){fail()}
+  });
+})();
+</script>
+</body>
+</html>
